@@ -4,4 +4,5 @@
 
 ### ENVIRONMANT VARIABLES
 
--> MONGO_DB_URI=<mongo-db-uri>
+-> MONGO_DB_URI=<"mongo-db-uri">
+-> TOKEN_SECRET_KEY=<"token-secret-key">
