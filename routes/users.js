@@ -1,10 +1,11 @@
 const express = require("express")
 const User = require('../models/User')
+const verify = require('../utils/verifyToken')
 
 const router = express.Router()
 
 // GET ALL USERS 
-router.get('/', async (req, res) => {
+router.get('/', verify, async (req, res) => {
     
     try {
         const allUsers = await User.find()
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
 })
 
 // GET A SINGLE USER
-router.get('/:userId', async (req, res) => {
+router.get('/:userId', verify, async (req, res) => {
     try {
         const singleUser = await User.findById(req.params.userId)
         res.json(singleUser)
@@ -25,7 +26,7 @@ router.get('/:userId', async (req, res) => {
 })
 
 // CREATE NEW USER 
-router.post('/', async (req, res) => {
+router.post('/', verify, async (req, res) => {
     try {
         const user = new User({
             firstName: req.body.firstName,
@@ -44,7 +45,7 @@ router.post('/', async (req, res) => {
 })
 
 // EDIT USER
-router.put('/:userId', async (req, res) => {
+router.put('/:userId', verify, async (req, res) => {
     try {
         
         const updatedUser = await User.updateOne(
@@ -67,7 +68,7 @@ router.put('/:userId', async (req, res) => {
 })
 
 // DELETE USER
-router.delete('/:userId', async (req, res) => {
+router.delete('/:userId', verify, async (req, res) => {
     
     try {
 

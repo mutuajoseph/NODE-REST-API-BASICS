@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 // IMPORT VALIDATIONS
-const { registerSchema, loginSchema } = require("../validation");
+const { registerSchema, loginSchema } = require("../utils/validation");
 
 const router = express.Router();
 
